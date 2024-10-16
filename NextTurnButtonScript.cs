@@ -9,7 +9,6 @@ public class NextTurnButtonScript : MonoBehaviour
     GameObject BattleSystem;
     BattleScript BattleScript;
 
-
     [SerializeField] public GameObject PlayerStar1;
     [SerializeField] public GameObject PlayerStar2;
     [SerializeField] public GameObject PlayerStar3;
@@ -27,14 +26,11 @@ public class NextTurnButtonScript : MonoBehaviour
         BattleScript = BattleSystem.GetComponent<BattleScript>();
         // BattleScript = BattleSystem.GetComponent<BattleScript>();
         audioSource = GetComponent<AudioSource>();
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
     }
     int pstar = 0;
     int cpstar = 0;
@@ -46,12 +42,12 @@ public class NextTurnButtonScript : MonoBehaviour
     bool cpstarflag3 = false;
 
 
-
     public void NextTurn(){
         
         audioSource.PlayOneShot(impact, 1.0F);
         DOVirtual.DelayedCall(0.17f, () => {
-            BattleScript.DeleteCard();
+            BattleScript.DeleteCard(); //前のターンで出したカードを手持ちから削除
+            // 場の初期化
             BattleScript.ResultWindow.SetActive(false);
             BattleScript.WinMessage.SetActive(false);
             BattleScript.LoseMessage.SetActive(false);
@@ -74,9 +70,7 @@ public class NextTurnButtonScript : MonoBehaviour
             
             BattleScript.turn = BattleScript.turn + 1;
 
-
-
-            
+            //勝利数の処理
             if(PlayerStar1.activeSelf == true && pstarflag1 == false){
                 pstar = pstar + 1;
                 pstarflag1 = true;
@@ -102,6 +96,7 @@ public class NextTurnButtonScript : MonoBehaviour
                 cpstarflag3 = true;
             }
 
+            //3勝したら勝利 or 5ターン経過後勝利数の多いほうが勝利
             if(pstar == 3){
                 SceneManager.LoadScene("WinScene");
             }
@@ -118,16 +113,11 @@ public class NextTurnButtonScript : MonoBehaviour
                 SceneManager.LoadScene("DrawScene");
             }
 
-
-
-
             if(BattleScript.turn > 5){
                 BattleScript.TurnMessage.text = 5 + "ターン目";
             }else{
                 BattleScript.TurnMessage.text = BattleScript.turn + "ターン目";
             }
         });
-
-
     } 
 }
