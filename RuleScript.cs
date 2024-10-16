@@ -7,15 +7,13 @@ public class RuleScript : MonoBehaviour
     [SerializeField] GameObject Rule;
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {   
     }
-
     // Update is called once per frame
     void Update()
     {
-        
     }
+    //ルールウィンドウを表示
     public void RuleClick(){
         Rule.SetActive(true);
         Debug.Log("押された");
