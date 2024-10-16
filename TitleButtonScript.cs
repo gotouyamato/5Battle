@@ -7,17 +7,15 @@ public class TitleButtonScript : MonoBehaviour
 {
     public AudioClip impact;
     AudioSource audioSource;
-    // Start is called before the first frame update
+
+    //タイトル画面の処理
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        
+        audioSource = GetComponent<AudioSource>(); 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
     // コルーチンの定義
     IEnumerator LoadSceneAfterSound()
