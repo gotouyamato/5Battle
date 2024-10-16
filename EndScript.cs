@@ -5,19 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class EndScript : MonoBehaviour
 {
+    //　終了ボタンの処理
     public AudioClip impact;
     AudioSource audioSource;
-    // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        
+        audioSource = GetComponent<AudioSource>();   
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
     }
     IEnumerator LoadSceneAfterSound()
     {
@@ -29,6 +25,5 @@ public class EndScript : MonoBehaviour
     public void MoveTitle(){
         audioSource.PlayOneShot(impact, 1.0F);
         StartCoroutine(LoadSceneAfterSound());
-        
     }
 }
