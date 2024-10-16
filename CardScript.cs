@@ -29,6 +29,7 @@ public class CardScript : MonoBehaviour
         
     }
     
+    // カード1を場に出す
     public void DownImage1() {
         if (BattleScript.FieldImage1.activeSelf == false && BattleScript.FieldImage2.activeSelf == false && BattleScript.FieldImage3.activeSelf == false && BattleScript.FieldImage4.activeSelf == false && BattleScript.FieldImage5.activeSelf == false) {
             if (BattleScript.Image1.activeSelf == true) {
@@ -43,6 +44,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード2を場に出す
     public void DownImage2() {
         if (BattleScript.FieldImage1.activeSelf == false && BattleScript.FieldImage2.activeSelf == false && BattleScript.FieldImage3.activeSelf == false && BattleScript.FieldImage4.activeSelf == false && BattleScript.FieldImage5.activeSelf == false) {
             if (BattleScript.Image2.activeSelf == true) {
@@ -56,6 +58,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード3を場に出す
     public void DownImage3() {
         if (BattleScript.FieldImage1.activeSelf == false && BattleScript.FieldImage2.activeSelf == false && BattleScript.FieldImage3.activeSelf == false && BattleScript.FieldImage4.activeSelf == false && BattleScript.FieldImage5.activeSelf == false) {
             if (BattleScript.Image3.activeSelf == true) {
@@ -68,6 +71,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード4を場に出す
     public void DownImage4() {
         if (BattleScript.FieldImage1.activeSelf == false && BattleScript.FieldImage2.activeSelf == false && BattleScript.FieldImage3.activeSelf == false && BattleScript.FieldImage4.activeSelf == false && BattleScript.FieldImage5.activeSelf == false) {
             if (BattleScript.Image4.activeSelf == true) {
@@ -80,6 +84,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード5を場に出す
     public void DownImage5() {
         if (BattleScript.FieldImage1.activeSelf == false && BattleScript.FieldImage2.activeSelf == false && BattleScript.FieldImage3.activeSelf == false && BattleScript.FieldImage4.activeSelf == false && BattleScript.FieldImage5.activeSelf == false) {
             if (BattleScript.Image5.activeSelf == true) {
@@ -92,6 +97,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード人間1を場に出す
     public void DownHuman1() {
         if (BattleScript.FieldImageHuman1.activeSelf == false && BattleScript.FieldImageHuman2.activeSelf == false && BattleScript.FieldImageHuman3.activeSelf == false && BattleScript.FieldImageDevil.activeSelf == false && BattleScript.FieldImageAngel.activeSelf == false) {
             if (BattleScript.ImageHuman1.activeSelf == true) {
@@ -104,6 +110,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード人間2を場に出す
     public void DownHuman2() {
         if (BattleScript.FieldImageHuman1.activeSelf == false && BattleScript.FieldImageHuman2.activeSelf == false && BattleScript.FieldImageHuman3.activeSelf == false && BattleScript.FieldImageDevil.activeSelf == false && BattleScript.FieldImageAngel.activeSelf == false) {
         // ImageHuman2がtrueだったらという条件をif文で書く
@@ -117,6 +124,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード人間3を場に出す
     public void DownHuman3() {
         if (BattleScript.FieldImageHuman1.activeSelf == false && BattleScript.FieldImageHuman2.activeSelf == false && BattleScript.FieldImageHuman3.activeSelf == false && BattleScript.FieldImageDevil.activeSelf == false && BattleScript.FieldImageAngel.activeSelf == false) {
         // ImageHuman3がtrueだったらという条件をif文で書く
@@ -130,6 +138,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード悪魔を場に出す
     public void DownDevil() {
         if (BattleScript.FieldImageHuman1.activeSelf == false && BattleScript.FieldImageHuman2.activeSelf == false && BattleScript.FieldImageHuman3.activeSelf == false && BattleScript.FieldImageDevil.activeSelf == false && BattleScript.FieldImageAngel.activeSelf == false) {
         // ImageDevilがtrueだったらという条件をif文で書く
@@ -143,6 +152,7 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+    // カード天使を場に出す
     public void DownAngel() {
         if (BattleScript.FieldImageHuman1.activeSelf == false && BattleScript.FieldImageHuman2.activeSelf == false && BattleScript.FieldImageHuman3.activeSelf == false && BattleScript.FieldImageDevil.activeSelf == false && BattleScript.FieldImageAngel.activeSelf == false) {
         // ImageAngelがtrueだったらという条件をif文で書く
@@ -157,7 +167,7 @@ public class CardScript : MonoBehaviour
         }
     }
 
-
+    // カード1を手札に戻す
     public void DownFieldImage1() {
         if (BattleScript.FieldImage1.activeSelf == true) {
             audioSource.PlayOneShot(cancel, 1.0F);
@@ -168,6 +178,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード2を手札に戻す
     public void DownFieldImage2() {
         // FieldImage2がtrueだったらという条件をif文で書く
         if (BattleScript.FieldImage2.activeSelf == true) {
@@ -179,6 +190,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード3を手札に戻す
     public void DownFieldImage3() {
         // FieldImage3がtrueだったらという条件をif文で書く
         if (BattleScript.FieldImage3.activeSelf == true) {
@@ -190,6 +202,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード4を手札に戻す
     public void DownFieldImage4() {
         // FieldImage4がtrueだったらという条件をif文で書く
         if (BattleScript.FieldImage4.activeSelf == true) {
@@ -201,6 +214,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード5を手札に戻す
     public void DownFieldImage5() {
         // FieldImage5がtrueだったらという条件をif文で書く
         if (BattleScript.FieldImage5.activeSelf == true) {
@@ -212,6 +226,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード人間1を手札に戻す
     public void DownFieldImageHuman1() {
         if (BattleScript.FieldImageHuman1.activeSelf == true) {
             audioSource.PlayOneShot(cancel, 1.0F);
@@ -222,6 +237,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード人間2を手札に戻す
     public void DownFieldImageHuman2() {
         // FieldImageHuman2がtrueだったらという条件をif文で書く
         if (BattleScript.FieldImageHuman2.activeSelf == true) {
@@ -233,6 +249,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード人間3を手札に戻す
     public void DownFieldImageHuman3() {
         // FieldImageHuman3がtrueだったらという条件をif文で書く
         if (BattleScript.FieldImageHuman3.activeSelf == true) {
@@ -244,6 +261,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード悪魔を手札に戻す
     public void DownFieldImageDevil() {
         // FieldImageDevilがtrueだったらという条件をif文で書く
         if (BattleScript.FieldImageDevil.activeSelf == true) {
@@ -255,6 +273,7 @@ public class CardScript : MonoBehaviour
             });
         }
     }
+    // カード天使を手札に戻す
     public void DownFieldImageAngel() {
         // FieldImageAngelがtrueだったらという条件をif文で書く
         if (BattleScript.FieldImageAngel.activeSelf == true) {
