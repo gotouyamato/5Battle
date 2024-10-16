@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class BattleScript : MonoBehaviour
 {
+    //オブジェクト宣言
     [SerializeField] TextMeshProUGUI Message;
     [SerializeField] public TextMeshProUGUI TurnMessage;
     [SerializeField] public GameObject Image1;
@@ -67,14 +68,16 @@ public class BattleScript : MonoBehaviour
     public string jobchoice;
     public int turn;
     // Start is called before the first frame update
+
     void Awake(){
         turn=1;
     }
+
     void Start()
     {
-        int[] CPHandCard = {1,2,3,4,5};
+        int[] CPHandCard = {1,2,3,4,5}; //コンピュータの手持ち数字カード
         CPHandCards.AddRange(CPHandCard);
-        string[] CPJobCard = {"人間","人間","人間","悪魔","天使"};
+        string[] CPJobCard = {"人間","人間","人間","悪魔","天使"}; //コンピュータの手持ち職業カード
         CPJobCards.AddRange(CPJobCard); 
         Message.text = "カードを選んでください";
         audioSource = GetComponent<AudioSource>();
@@ -87,6 +90,7 @@ public class BattleScript : MonoBehaviour
         
         
     }
+    // 出したカードを手札からなくす処理
     public void DeleteCard(){
         if(FieldImage1.activeSelf == true){
             FieldImage1.SetActive(false);
@@ -120,6 +124,7 @@ public class BattleScript : MonoBehaviour
         }
     }
 
+    // 場の数字カードがアクティブかどうかで選択した数字を判断
     public int NumChoice(){
         if(FieldImage1.activeSelf == true){
             numberchoice = 1;
@@ -138,6 +143,7 @@ public class BattleScript : MonoBehaviour
         }
         return numberchoice; 
     }
+    // 場の職業カードがアクティブかどうかで選択した職業を判断
     public string JobChoice(){
         if(FieldImageHuman1.activeSelf == true){
             jobchoice = "人間";
@@ -156,6 +162,7 @@ public class BattleScript : MonoBehaviour
         }
         return jobchoice;
     }
+    // コンピュータが選択する数字をランダムで処理
     public int CPNumChoice(){
         // Randomというクラスのインスタンスを作る
         Random random = new Random();
@@ -169,6 +176,7 @@ public class BattleScript : MonoBehaviour
         CPHandCards.RemoveAt(index);
         return hand;
     }
+    //コンピュータが選択する職業をランダムで処理
     public string CPJobChoice(){
         Random random = new Random();
         // リストからランダムにインデックスを取得する
@@ -185,8 +193,8 @@ public class BattleScript : MonoBehaviour
     int cpnum;
     string cpjob;
     int jobflag;
+    // プレイヤーとコンピュータの職業の相性をジャッジ
     public int JobChecker(string playerjob, string cpjob){
-
         if(playerjob == "人間" && cpjob == "悪魔" || playerjob == "天使" && cpjob == "人間"){
             jobflag = 0;
 
@@ -199,11 +207,13 @@ public class BattleScript : MonoBehaviour
         }else{
             jobflag = 4;
         }
-        return jobflag;
+        return jobflag; //jobflagによって有利か不利かを判断
     }
+    // コンピュータがカードをめくるときの処理
     public void CPTurn(int cpnum, string cpjob){
         audioSource.PlayOneShot(card, 1.0F);
-                
+        
+        // 選択が1なら1を表示
         if(cpnum == 1){
             EnemyFieldImage1.SetActive(true);
             BlackImage1.SetActive(false);
@@ -220,6 +230,7 @@ public class BattleScript : MonoBehaviour
             EnemyFieldImage5.SetActive(true);
             BlackImage1.SetActive(false);
         }
+        // 選択が人間なら人間を表示
         DOVirtual.DelayedCall(1.5f, () => {
             audioSource.PlayOneShot(card, 1.0F);
             if(cpjob == "人間"){
@@ -239,6 +250,7 @@ public class BattleScript : MonoBehaviour
     }
     public int psyouri = 0;
 
+    // プレイヤーとコンピュータの勝利数によってリザルトウィンドウを変更
     public void Result(int player, int npc){
         if(player > npc){
             WinResult();
@@ -248,13 +260,14 @@ public class BattleScript : MonoBehaviour
         }else{
             DrawResult();
         }
-
     }
+
     [HideInInspector]
     public int playerpoint = 0;
     [HideInInspector]
     public int cppoint = 0;
     
+    //勝利リザルトウィンドウ
     public void WinResult(){
         ResultWindow.SetActive(true);
         WinMessage.SetActive(true);
@@ -267,6 +280,8 @@ public class BattleScript : MonoBehaviour
             PlayerStar3.SetActive(true);
         }
     }
+
+    //敗北リザルトウィンドウ
     public void LoseResult(){
         ResultWindow.SetActive(true);
         LoseMessage.SetActive(true);
@@ -280,21 +295,23 @@ public class BattleScript : MonoBehaviour
         }
 
     }
+
+    //引き分けリザルトウィンドウ
     public void DrawResult(){
         ResultWindow.SetActive(true);
         DrawMessage.SetActive(true);
     }
 
-
     public int lastnumberchoice;
     public int lastcpnum;
     public void Battle(){
-        jobchoice = JobChoice();
-        numberchoice = NumChoice();
-        cpnum = CPNumChoice();
-        cpjob = CPJobChoice();
+        jobchoice = JobChoice(); // プレイヤーの職業選択
+        numberchoice = NumChoice(); // プレイヤーの数字選択
+        cpjob = CPJobChoice(); // コンピュータの職業選択
+        cpnum = CPNumChoice(); // コンピュータの数字選択
         Message.text = "バトル開始！";
         jobflag = JobChecker(jobchoice,cpjob); //jobflag 0:プレイヤーの有利 1:CPの有利 2:プレイヤーの即勝ち 3:CPの即勝ち 4:ドロー 
+        // jobflagによる有利不利の処理
         if(jobflag == 0){
             lastnumberchoice = numberchoice + 1;
             lastcpnum = cpnum;
@@ -313,10 +330,6 @@ public class BattleScript : MonoBehaviour
             lastnumberchoice = numberchoice;
             lastcpnum = cpnum;
         }
-        // if(turn < 5){
-        //     turn = turn + 1;
-        // }
-
 
         CPTurn(cpnum,cpjob);
         DOVirtual.DelayedCall(3.0f, () => {
